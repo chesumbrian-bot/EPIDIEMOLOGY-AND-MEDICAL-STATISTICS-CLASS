@@ -5,37 +5,848 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Epidemiology & Medical Statistics</title>
+
+    <style>
+        /* =========================
+           GENERAL STYLES
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f8fb;
+            color: #263238;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        nav {
+            background: #063b6d;
+            color: white;
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4dd0e1;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================== */
+
+        .hero {
+            background:
+                linear-gradient(rgba(6,59,109,0.88), rgba(0,105,92,0.88)),
+                url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+            text-align: center;
+            padding: 110px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 28px;
+            background: #00acc1;
+            color: white;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #00838f;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================== */
+
+        section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            color: #063b6d;
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #607d8b;
+        }
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        /* =========================
+           COURSE CARDS
+        ========================== */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .card-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #063b6d;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #607d8b;
+        }
+
+        /* =========================
+           TOPICS
+        ========================== */
+
+        .topics {
+            background: #eaf5f8;
+        }
+
+        .topic-list {
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .topic {
+            background: white;
+            padding: 18px;
+            border-left: 5px solid #00acc1;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        /* =========================
+           STATISTICS SECTION
+        ========================== */
+
+        .statistics {
+            background: white;
+        }
+
+        .stat-boxes {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-box {
+            background: #063b6d;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .stat-box h3 {
+            font-size: 30px;
+            color: #4dd0e1;
+        }
+
+        /* =========================
+           RESOURCES
+        ========================== */
+
+        .resources {
+            background: #f4f8fb;
+        }
+
+        .resource-list {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .resource {
+            background: white;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .resource h3 {
+            color: #063b6d;
+        }
+
+        /* =========================
+           ANNOUNCEMENT
+        ========================== */
+
+        .announcement {
+            background: #fff8e1;
+            border-left: 6px solid #ffb300;
+            padding: 25px;
+            max-width: 900px;
+            margin: auto;
+            border-radius: 8px;
+        }
+
+        .announcement h3 {
+            color: #e65100;
+            margin-bottom: 8px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact {
+            background: #063b6d;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact p {
+            margin: 10px 0;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #032744;
+            color: #b0bec5;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* =========================
+           MOBILE MENU
+        ========================== */
+
+        .menu-button {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           MOBILE RESPONSIVE
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            .menu-button {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #063b6d;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero {
+                padding: 80px 20px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 55px 6%;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Epidemiology & Medical Statistics</h1>
-        <p>Welcome to our class website</p>
-    </header>
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
-    <main>
-        <h2>Welcome!</h2>
+    <nav>
+
+        <div class="logo">
+            EPI & MED STATS
+        </div>
+
+        <div class="menu-button" onclick="toggleMenu()">
+            ☰
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#topics">Topics</a></li>
+            <li><a href="#statistics">Statistics</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <h1>
+            Epidemiology & Medical Statistics
+        </h1>
 
         <p>
-            This website is a learning platform for our
-            Epidemiology and Medical Statistics course.
+            Welcome to our class learning website.
+            Explore epidemiology, medical statistics,
+            course materials, resources, and important
+            class information.
         </p>
 
-        <h2>Course Areas</h2>
+        <a href="#about" class="hero-button">
+            Explore Course
+        </a>
 
-        <ul>
-            <li>Epidemiology</li>
-            <li>Medical Statistics</li>
-            <li>Lecture Notes</li>
-            <li>Assignments</li>
-            <li>Course Resources</li>
-        </ul>
-    </main>
+    </section>
+
+
+    <!-- =========================
+         ABOUT COURSE
+    ========================== -->
+
+    <section class="about" id="about">
+
+        <div class="section-title">
+            <h2>About the Course</h2>
+            <p>Understanding health through evidence and data</p>
+        </div>
+
+        <div class="about-content">
+
+            <p>
+                Epidemiology and Medical Statistics are essential
+                areas of health science that help us understand
+                disease patterns, identify risk factors, evaluate
+                health interventions, and make evidence-based
+                decisions.
+            </p>
+
+            <br>
+
+            <p>
+                This website provides a central place for our class
+                to access learning materials, explore important
+                concepts, review statistical methods, and keep up
+                with course announcements.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         COURSE AREAS
+    ========================== -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>Course Areas</h2>
+
+            <p>
+                Explore the major areas covered in the course
+            </p>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">🦠</div>
+
+                <h3>Epidemiology</h3>
+
+                <p>
+                    Study the distribution and determinants
+                    of health-related events in populations.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">📊</div>
+
+                <h3>Medical Statistics</h3>
+
+                <p>
+                    Learn how statistical methods are used
+                    to analyze and interpret medical data.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🔬</div>
+
+                <h3>Research Methods</h3>
+
+                <p>
+                    Understand study designs, data collection,
+                    research questions, and scientific evidence.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">📈</div>
+
+                <h3>Data Analysis</h3>
+
+                <p>
+                    Explore ways of organizing, analyzing,
+                    presenting, and interpreting health data.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EPIDEMIOLOGY TOPICS
+    ========================== -->
+
+    <section class="topics" id="topics">
+
+        <div class="section-title">
+
+            <h2>Epidemiology Topics</h2>
+
+            <p>
+                Important concepts to explore
+            </p>
+
+        </div>
+
+        <div class="topic-list">
+
+            <div class="topic">
+                <strong>1.</strong> Measures of disease frequency
+            </div>
+
+            <div class="topic">
+                <strong>2.</strong> Incidence and prevalence
+            </div>
+
+            <div class="topic">
+                <strong>3.</strong> Measures of association
+            </div>
+
+            <div class="topic">
+                <strong>4.</strong> Study designs
+            </div>
+
+            <div class="topic">
+                <strong>5.</strong> Cohort studies
+            </div>
+
+            <div class="topic">
+                <strong>6.</strong> Case-control studies
+            </div>
+
+            <div class="topic">
+                <strong>7.</strong> Cross-sectional studies
+            </div>
+
+            <div class="topic">
+                <strong>8.</strong> Bias and confounding
+            </div>
+
+            <div class="topic">
+                <strong>9.</strong> Screening and diagnostic tests
+            </div>
+
+            <div class="topic">
+                <strong>10.</strong> Outbreak investigation
+            </div>
+
+            <div class="topic">
+                <strong>11.</strong> Public health surveillance
+            </div>
+
+            <div class="topic">
+                <strong>12.</strong> Causation in epidemiology
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MEDICAL STATISTICS
+    ========================== -->
+
+    <section class="statistics" id="statistics">
+
+        <div class="section-title">
+
+            <h2>Medical Statistics</h2>
+
+            <p>
+                Key statistical concepts
+            </p>
+
+        </div>
+
+        <div class="stat-boxes">
+
+            <div class="stat-box">
+                <h3>01</h3>
+                <p>Descriptive Statistics</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>02</h3>
+                <p>Probability</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>03</h3>
+                <p>Sampling</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>04</h3>
+                <p>Hypothesis Testing</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>05</h3>
+                <p>Confidence Intervals</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>06</h3>
+                <p>Regression</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RESOURCES
+    ========================== -->
+
+    <section class="resources" id="resources">
+
+        <div class="section-title">
+
+            <h2>Learning Resources</h2>
+
+            <p>
+                Materials for your class
+            </p>
+
+        </div>
+
+        <div class="resource-list">
+
+            <div class="resource">
+
+                <h3>📚 Lecture Notes</h3>
+
+                <p>
+                    Course lecture notes and study materials
+                    will be added here.
+                </p>
+
+            </div>
+
+
+            <div class="resource">
+
+                <h3>📝 Assignments</h3>
+
+                <p>
+                    Class assignments and practice questions
+                    can be added here.
+                </p>
+
+            </div>
+
+
+            <div class="resource">
+
+                <h3>📖 Recommended Reading</h3>
+
+                <p>
+                    Textbooks, articles, guidelines, and other
+                    learning resources can be listed here.
+                </p>
+
+            </div>
+
+
+            <div class="resource">
+
+                <h3>💻 Statistical Software</h3>
+
+                <p>
+                    Resources for statistical analysis software
+                    can be added here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ANNOUNCEMENT
+    ========================== -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>Class Announcements</h2>
+
+        </div>
+
+        <div class="announcement">
+
+            <h3>📢 Welcome to the Course Website!</h3>
+
+            <p>
+                This website will be used to share important
+                course information, learning resources,
+                assignments, and announcements.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section class="contact" id="contact">
+
+        <div class="section-title">
+
+            <h2>Contact</h2>
+
+            <p>
+                Get in touch with the class
+            </p>
+
+        </div>
+
+        <p>
+            📧 Course Email: Add your course email here
+        </p>
+
+        <p>
+            👨‍🏫 Lecturer: Add lecturer name here
+        </p>
+
+        <p>
+            👥 Class Representative: Add name here
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
     <footer>
-        <p>&copy; 2026 Epidemiology & Medical Statistics</p>
+
+        <p>
+            &copy; 2026 Epidemiology & Medical Statistics
+        </p>
+
+        <p>
+            Class Learning Website
+        </p>
+
     </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function toggleMenu() {
+
+            const navLinks =
+                document.getElementById("navLinks");
+
+            navLinks.classList.toggle("active");
+
+        }
+
+        // Close mobile menu after clicking a link
+
+        const links =
+            document.querySelectorAll(".nav-links a");
+
+        links.forEach(function(link) {
+
+            link.addEventListener("click", function() {
+
+                document
+                    .getElementById("navLinks")
+                    .classList.remove("active");
+
+            });
+
+        });
+
+    </script>
 
 </body>
 </html>
+
+
