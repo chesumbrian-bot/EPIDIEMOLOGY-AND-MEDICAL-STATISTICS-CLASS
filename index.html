@@ -4,12 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Epidemiology & Medical Statistics</title>
+    <meta name="description"
+          content="Kirinyaga University Epidemiology and Medical Statistics student learning portal">
+
+    <title>Epidemiology & Medical Statistics | Kirinyaga University</title>
 
     <style>
-        /* =========================
-           GENERAL STYLES
-        ========================== */
+        /* =====================================================
+           KIRINYAGA UNIVERSITY
+           EPIDEMIOLOGY & MEDICAL STATISTICS
+           STUDENT PORTAL
+        ===================================================== */
+
+        :root {
+            --green: #087443;
+            --dark-green: #04502e;
+            --light-green: #e9f7ef;
+            --gold: #f5b700;
+            --dark-gold: #d89f00;
+            --blue: #087ea4;
+            --dark: #17324d;
+            --text: #263238;
+            --muted: #607d8b;
+            --white: #ffffff;
+            --background: #f4f8f6;
+            --border: #dfe9e4;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
 
         * {
             margin: 0;
@@ -23,316 +44,710 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #f4f8fb;
-            color: #263238;
+            background: var(--background);
+            color: var(--text);
             line-height: 1.6;
         }
 
         a {
             text-decoration: none;
-            color: inherit;
         }
 
-        /* =========================
-           NAVIGATION
-        ========================== */
+        button,
+        input {
+            font-family: inherit;
+        }
 
-        nav {
-            background: #063b6d;
+        /* =====================================================
+           TOP BAR
+        ===================================================== */
+
+        .top-bar {
+            background: var(--dark-green);
             color: white;
-            padding: 15px 6%;
+            padding: 8px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .top-bar-right {
+            color: #d9f3e4;
+        }
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        .navbar {
+            background: white;
+            padding: 12px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .logo {
-            font-size: 20px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), var(--dark-green));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
+            font-size: 17px;
+            border: 4px solid var(--gold);
+            flex-shrink: 0;
+        }
+
+        .brand-text h1 {
+            font-size: 17px;
+            color: var(--green);
+            line-height: 1.2;
+        }
+
+        .brand-text p {
+            font-size: 12px;
+            color: var(--muted);
         }
 
         .nav-links {
             display: flex;
-            gap: 25px;
+            align-items: center;
+            gap: 22px;
             list-style: none;
         }
 
         .nav-links a {
-            color: white;
+            color: var(--dark);
             font-weight: bold;
+            font-size: 14px;
             transition: 0.3s;
         }
 
         .nav-links a:hover {
-            color: #4dd0e1;
+            color: var(--green);
         }
 
-        /* =========================
-           HERO SECTION
-        ========================== */
+        .menu-button {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--green);
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
 
         .hero {
             background:
-                linear-gradient(rgba(6,59,109,0.88), rgba(0,105,92,0.88)),
-                url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80");
-
-            background-size: cover;
-            background-position: center;
+                linear-gradient(
+                    120deg,
+                    rgba(4, 80, 46, 0.96),
+                    rgba(8, 116, 67, 0.90),
+                    rgba(8, 126, 164, 0.86)
+                );
 
             color: white;
-            text-align: center;
-            padding: 110px 20px;
+            padding: 80px 7%;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(245, 183, 0, 0.12);
+            border-radius: 50%;
+            top: -100px;
+            right: -80px;
         }
 
-        .hero p {
-            font-size: 20px;
-            max-width: 750px;
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+            bottom: -80px;
+            left: 10%;
+        }
+
+        .hero-content {
+            max-width: 1100px;
             margin: auto;
+            position: relative;
+            z-index: 2;
         }
 
-        .hero-button {
+        .welcome-badge {
             display: inline-block;
-            margin-top: 30px;
-            padding: 14px 28px;
-            background: #00acc1;
-            color: white;
-            border-radius: 30px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 8px 15px;
+            border-radius: 25px;
+            margin-bottom: 18px;
+            font-size: 14px;
+        }
+
+        .hero h2 {
+            font-size: clamp(34px, 6vw, 58px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            max-width: 900px;
+        }
+
+        .hero h2 span {
+            color: var(--gold);
+        }
+
+        .hero-description {
+            max-width: 750px;
+            font-size: 18px;
+            color: #eaf8f0;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 22px;
+            border-radius: 8px;
             font-weight: bold;
+            border: none;
+            cursor: pointer;
             transition: 0.3s;
         }
 
-        .hero-button:hover {
-            background: #00838f;
+        .btn-gold {
+            background: var(--gold);
+            color: #222;
+        }
+
+        .btn-gold:hover {
+            background: #ffd04a;
             transform: translateY(-2px);
         }
 
-        /* =========================
+        .btn-white {
+            background: white;
+            color: var(--green);
+        }
+
+        .btn-white:hover {
+            background: #eefaf3;
+            transform: translateY(-2px);
+        }
+
+        /* =====================================================
+           QUICK ACTIONS
+        ===================================================== */
+
+        .quick-actions {
+            max-width: 1100px;
+            margin: -35px auto 0;
+            position: relative;
+            z-index: 10;
+            padding: 0 20px;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .quick-card {
+            background: white;
+            padding: 22px 15px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--green);
+            transition: 0.3s;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .quick-icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .quick-card h3 {
+            color: var(--dark);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .quick-card p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* =====================================================
            GENERAL SECTIONS
-        ========================== */
+        ===================================================== */
 
         section {
-            padding: 70px 8%;
+            padding: 75px 6%;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title h2 {
-            color: #063b6d;
-            font-size: 34px;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #607d8b;
-        }
-
-        /* =========================
-           ABOUT
-        ========================== */
-
-        .about {
-            background: white;
-        }
-
-        .about-content {
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        /* =========================
-           COURSE CARDS
-        ========================== */
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+        .section-container {
             max-width: 1100px;
             margin: auto;
         }
 
-        .card {
-            background: white;
-            padding: 30px 25px;
-            border-radius: 12px;
+        .section-heading {
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+
+        .section-heading .small-title {
+            color: var(--green);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 13px;
+        }
+
+        .section-heading h2 {
+            font-size: 34px;
+            color: var(--dark);
+            margin: 5px 0 10px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        .search-section {
+            background: white;
+        }
+
+        .search-box {
+            max-width: 750px;
+            margin: auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 17px 50px 17px 20px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            outline: none;
+            font-size: 16px;
             transition: 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        .search-box input:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 4px rgba(8,116,67,0.1);
         }
 
-        .card-icon {
-            font-size: 45px;
+        .search-icon {
+            position: absolute;
+            right: 18px;
+            top: 13px;
+            font-size: 25px;
+        }
+
+        #searchResults {
+            max-width: 750px;
+            margin: 20px auto 0;
+        }
+
+        .search-result {
+            background: var(--light-green);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid var(--green);
+        }
+
+        .no-results {
+            text-align: center;
+            color: var(--muted);
+        }
+
+        /* =====================================================
+           FEATURE CARDS
+        ===================================================== */
+
+        .features {
+            background: var(--background);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+            border-bottom: 4px solid var(--green);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
             margin-bottom: 15px;
         }
 
-        .card h3 {
-            color: #063b6d;
-            margin-bottom: 10px;
+        .feature-card h3 {
+            color: var(--green);
+            margin-bottom: 8px;
         }
 
-        .card p {
-            color: #607d8b;
+        .feature-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 18px;
         }
 
-        /* =========================
+        .feature-link {
+            color: var(--green);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* =====================================================
            TOPICS
-        ========================== */
+        ===================================================== */
 
-        .topics {
-            background: #eaf5f8;
+        .topics-section {
+            background: white;
         }
 
-        .topic-list {
-            max-width: 900px;
-            margin: auto;
+        .topic-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
         }
 
         .topic {
-            background: white;
-            padding: 18px;
-            border-left: 5px solid #00acc1;
-            border-radius: 6px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            background: var(--light-green);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--green);
+            transition: 0.3s;
         }
 
-        /* =========================
-           STATISTICS SECTION
-        ========================== */
-
-        .statistics {
-            background: white;
+        .topic:hover {
+            background: #dff1e7;
+            transform: translateY(-3px);
         }
 
-        .stat-boxes {
-            max-width: 1000px;
-            margin: auto;
+        .topic-number {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .topic h3 {
+            color: var(--dark);
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        /* =====================================================
+           RESOURCES
+        ===================================================== */
+
+        .resources {
+            background: #eef7f2;
+        }
+
+        .resource-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
 
-        .stat-box {
-            background: #063b6d;
-            color: white;
-            padding: 25px;
-            text-align: center;
-            border-radius: 10px;
-        }
-
-        .stat-box h3 {
-            font-size: 30px;
-            color: #4dd0e1;
-        }
-
-        /* =========================
-           RESOURCES
-        ========================== */
-
-        .resources {
-            background: #f4f8fb;
-        }
-
-        .resource-list {
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .resource {
+        .resource-card {
             background: white;
-            margin-bottom: 15px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
         }
 
-        .resource h3 {
-            color: #063b6d;
+        .resource-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 10px;
+            background: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            flex-shrink: 0;
         }
 
-        /* =========================
-           ANNOUNCEMENT
-        ========================== */
+        .resource-card h3 {
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .resource-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .resource-button {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            padding: 7px 13px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .resource-button:hover {
+            background: var(--dark-green);
+        }
+
+        /* =====================================================
+           ANNOUNCEMENTS
+        ===================================================== */
+
+        .announcement-section {
+            background: white;
+        }
 
         .announcement {
-            background: #fff8e1;
-            border-left: 6px solid #ffb300;
-            padding: 25px;
-            max-width: 900px;
+            max-width: 850px;
             margin: auto;
-            border-radius: 8px;
+            background: #fff9e6;
+            border-left: 6px solid var(--gold);
+            border-radius: 10px;
+            padding: 25px;
         }
 
-        .announcement h3 {
-            color: #e65100;
+        .announcement-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin-bottom: 8px;
         }
 
-        /* =========================
-           CONTACT
-        ========================== */
+        .announcement-header h3 {
+            color: #8a6500;
+        }
 
-        .contact {
-            background: #063b6d;
+        .announcement p {
+            color: #5f5330;
+        }
+
+        /* =====================================================
+           VIDEO
+        ===================================================== */
+
+        .video-section {
+            background: var(--dark);
+            color: white;
+        }
+
+        .video-section .section-heading h2 {
+            color: white;
+        }
+
+        .video-section .section-heading p {
+            color: #cbd8e1;
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: auto;
+            background: #0c2438;
+            padding: 20px;
+            border-radius: 14px;
+        }
+
+        .video-placeholder {
+            min-height: 280px;
+            background:
+                linear-gradient(
+                    rgba(4,80,46,0.75),
+                    rgba(8,126,164,0.75)
+                );
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .youtube-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .video-placeholder h3 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .video-placeholder p {
+            color: #e0edf4;
+            margin-bottom: 20px;
+        }
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--green),
+                    var(--blue)
+                );
             color: white;
             text-align: center;
         }
 
-        .contact h2 {
-            color: white;
+        .contact-section h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
         }
 
-        .contact p {
-            margin: 10px 0;
+        .contact-section p {
+            color: #e7f7ef;
+            margin-bottom: 20px;
         }
 
-        /* =========================
+        /* =====================================================
            FOOTER
-        ========================== */
+        ===================================================== */
 
         footer {
-            background: #032744;
-            color: #b0bec5;
+            background: #032c1b;
+            color: #bcd6c8;
+            padding: 40px 6% 20px;
+        }
+
+        .footer-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 30px;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        footer p,
+        footer li {
+            font-size: 14px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 7px;
+        }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
             text-align: center;
-            padding: 25px;
+            font-size: 13px;
         }
 
-        /* =========================
-           MOBILE MENU
-        ========================== */
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
-        .menu-button {
-            display: none;
-            font-size: 28px;
-            cursor: pointer;
+        @media (max-width: 900px) {
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .quick-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .topic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
-        /* =========================
-           MOBILE RESPONSIVE
-        ========================== */
+        @media (max-width: 700px) {
 
-        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+
+            .navbar {
+                padding: 10px 5%;
+            }
 
             .menu-button {
                 display: block;
@@ -341,14 +756,13 @@
             .nav-links {
                 display: none;
                 position: absolute;
-                top: 60px;
+                top: 82px;
                 left: 0;
                 width: 100%;
-                background: #063b6d;
-                flex-direction: column;
-                text-align: center;
+                background: white;
                 padding: 20px;
-                gap: 15px;
+                flex-direction: column;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             }
 
             .nav-links.active {
@@ -356,23 +770,59 @@
             }
 
             .hero {
-                padding: 80px 20px;
+                padding: 65px 6%;
             }
 
-            .hero h1 {
-                font-size: 34px;
+            .hero-description {
+                font-size: 16px;
             }
 
-            .hero p {
-                font-size: 17px;
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .quick-actions {
+                margin-top: -20px;
+            }
+
+            .quick-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature-grid,
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topic-grid {
+                grid-template-columns: 1fr;
             }
 
             section {
-                padding: 55px 6%;
+                padding: 55px 5%;
             }
 
-            .section-title h2 {
+            .section-heading h2 {
                 font-size: 28px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .brand-text h1 {
+                font-size: 14px;
+            }
+
+            .brand-text p {
+                font-size: 10px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
             }
         }
     </style>
@@ -380,161 +830,158 @@
 
 <body>
 
-    <!-- =========================
+    <!-- =====================================================
+         EASY LINK SETTINGS
+         CHANGE THESE LINKS WHEN YOU HAVE THEM
+    ====================================================== -->
+
+    <script>
+        const COURSE_LINKS = {
+
+            // Attendance Google Form
+            attendance: "",
+
+            // Current Zoom meeting
+            zoom: "",
+
+            // YouTube channel or playlist
+            youtube: "",
+
+            // Course notes folder
+            notes: "",
+
+            // Assignments
+            assignments: "",
+
+            // Past papers
+            pastPapers: ""
+
+        };
+    </script>
+
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
+    <div class="top-bar">
+
+        <div>
+            🎓 Kirinyaga University
+        </div>
+
+        <div class="top-bar-right">
+            School of Health Sciences • Student Learning Portal
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
          NAVIGATION
-    ========================== -->
+    ====================================================== -->
 
-    <nav>
+    <nav class="navbar">
 
-        <div class="logo">
-            EPI & MED STATS
+        <div class="brand">
+
+            <div class="logo">
+                KyU
+            </div>
+
+            <div class="brand-text">
+                <h1>Kirinyaga University</h1>
+                <p>Epidemiology & Medical Statistics</p>
+            </div>
+
         </div>
 
-        <div class="menu-button" onclick="toggleMenu()">
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            type="button"
+            aria-label="Open navigation menu">
+
             ☰
-        </div>
+
+        </button>
+
 
         <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#topics">Topics</a></li>
-            <li><a href="#statistics">Statistics</a></li>
-            <li><a href="#resources">Resources</a></li>
-            <li><a href="#contact">Contact</a></li>
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#learning">Learning</a>
+            </li>
+
+            <li>
+                <a href="#topics">Topics</a>
+            </li>
+
+            <li>
+                <a href="#resources">Resources</a>
+            </li>
+
+            <li>
+                <a href="#videos">Videos</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
         </ul>
 
     </nav>
 
 
-    <!-- =========================
+    <!-- =====================================================
          HERO
-    ========================== -->
+    ====================================================== -->
 
     <section class="hero" id="home">
 
-        <h1>
-            Epidemiology & Medical Statistics
-        </h1>
+        <div class="hero-content">
 
-        <p>
-            Welcome to our class learning website.
-            Explore epidemiology, medical statistics,
-            course materials, resources, and important
-            class information.
-        </p>
-
-        <a href="#about" class="hero-button">
-            Explore Course
-        </a>
-
-    </section>
-
-
-    <!-- =========================
-         ABOUT COURSE
-    ========================== -->
-
-    <section class="about" id="about">
-
-        <div class="section-title">
-            <h2>About the Course</h2>
-            <p>Understanding health through evidence and data</p>
-        </div>
-
-        <div class="about-content">
-
-            <p>
-                Epidemiology and Medical Statistics are essential
-                areas of health science that help us understand
-                disease patterns, identify risk factors, evaluate
-                health interventions, and make evidence-based
-                decisions.
-            </p>
-
-            <br>
-
-            <p>
-                This website provides a central place for our class
-                to access learning materials, explore important
-                concepts, review statistical methods, and keep up
-                with course announcements.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         COURSE AREAS
-    ========================== -->
-
-    <section>
-
-        <div class="section-title">
-
-            <h2>Course Areas</h2>
-
-            <p>
-                Explore the major areas covered in the course
-            </p>
-
-        </div>
-
-        <div class="cards">
-
-            <div class="card">
-
-                <div class="card-icon">🦠</div>
-
-                <h3>Epidemiology</h3>
-
-                <p>
-                    Study the distribution and determinants
-                    of health-related events in populations.
-                </p>
-
+            <div class="welcome-badge">
+                🎓 Welcome, KyU Students
             </div>
 
+            <h2>
+                Epidemiology &
+                <span>Medical Statistics</span>
+            </h2>
 
-            <div class="card">
+            <p class="hero-description">
 
-                <div class="card-icon">📊</div>
+                Your class learning hub for lecture notes,
+                assignments, attendance, Zoom classes,
+                YouTube lectures and important announcements.
 
-                <h3>Medical Statistics</h3>
-
-                <p>
-                    Learn how statistical methods are used
-                    to analyze and interpret medical data.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">🔬</div>
-
-                <h3>Research Methods</h3>
-
-                <p>
-                    Understand study designs, data collection,
-                    research questions, and scientific evidence.
-                </p>
-
-            </div>
+            </p>
 
 
-            <div class="card">
+            <div class="hero-buttons">
 
-                <div class="card-icon">📈</div>
+                <a
+                    href="#learning"
+                    class="btn btn-gold">
 
-                <h3>Data Analysis</h3>
+                    📚 Explore Learning
 
-                <p>
-                    Explore ways of organizing, analyzing,
-                    presenting, and interpreting health data.
-                </p>
+                </a>
+
+                <a
+                    href="#resources"
+                    class="btn btn-white">
+
+                    🔗 Course Resources
+
+                </a>
 
             </div>
 
@@ -543,123 +990,375 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================================
+         QUICK ACTIONS
+    ====================================================== -->
+
+    <div class="quick-actions">
+
+        <div class="quick-grid">
+
+            <a
+                href="javascript:void(0)"
+                id="attendanceButton"
+                class="quick-card">
+
+                <div class="quick-icon">✅</div>
+
+                <h3>Attendance</h3>
+
+                <p>Sign attendance</p>
+
+            </a>
+
+
+            <a
+                href="javascript:void(0)"
+                id="zoomButton"
+                class="quick-card">
+
+                <div class="quick-icon">🎥</div>
+
+                <h3>Join Zoom</h3>
+
+                <p>Attend live class</p>
+
+            </a>
+
+
+            <a
+                href="javascript:void(0)"
+                id="youtubeButton"
+                class="quick-card">
+
+                <div class="quick-icon">▶️</div>
+
+                <h3>YouTube</h3>
+
+                <p>Watch lectures</p>
+
+            </a>
+
+
+            <a
+                href="javascript:void(0)"
+                id="notesButton"
+                class="quick-card">
+
+                <div class="quick-icon">📚</div>
+
+                <h3>Notes</h3>
+
+                <p>Find course notes</p>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SEARCH
+    ====================================================== -->
+
+    <section class="search-section">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <div class="small-title">
+                    Find Learning Material
+                </div>
+
+                <h2>🔎 Search the Course</h2>
+
+                <p>
+                    Quickly find topics and learning resources.
+                </p>
+
+            </div>
+
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search for incidence, prevalence, regression..."
+                    aria-label="Search course topics">
+
+                <div class="search-icon">
+                    🔍
+                </div>
+
+            </div>
+
+
+            <div id="searchResults"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LEARNING FEATURES
+    ====================================================== -->
+
+    <section class="features" id="learning">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <div class="small-title">
+                    Student Learning Hub
+                </div>
+
+                <h2>Everything in One Place</h2>
+
+                <p>
+                    Access the most important course activities
+                    from one simple dashboard.
+                </p>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">📚</div>
+
+                    <h3>Lecture Notes</h3>
+
+                    <p>
+                        Access lecture notes and learning
+                        materials organized for easy revision.
+                    </p>
+
+                    <a
+                        href="javascript:void(0)"
+                        id="notesLink"
+                        class="feature-link">
+
+                        Open Notes →
+
+                    </a>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">📝</div>
+
+                    <h3>Assignments</h3>
+
+                    <p>
+                        Find current assignments, instructions,
+                        deadlines and submission information.
+                    </p>
+
+                    <a
+                        href="javascript:void(0)"
+                        id="assignmentLink"
+                        class="feature-link">
+
+                        View Assignments →
+
+                    </a>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">✅</div>
+
+                    <h3>Attendance</h3>
+
+                    <p>
+                        Sign attendance for lectures and online
+                        sessions using the class attendance form.
+                    </p>
+
+                    <a
+                        href="javascript:void(0)"
+                        id="attendanceLink"
+                        class="feature-link">
+
+                        Sign Attendance →
+
+                    </a>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">🎥</div>
+
+                    <h3>Live Zoom Classes</h3>
+
+                    <p>
+                        Join scheduled online lectures directly
+                        from the student portal.
+                    </p>
+
+                    <a
+                        href="javascript:void(0)"
+                        id="zoomLink"
+                        class="feature-link">
+
+                        Join Class →
+
+                    </a>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">▶️</div>
+
+                    <h3>Video Lectures</h3>
+
+                    <p>
+                        Watch recorded lectures, tutorials and
+                        revision videos on YouTube.
+                    </p>
+
+                    <a
+                        href="javascript:void(0)"
+                        id="youtubeLink"
+                        class="feature-link">
+
+                        Watch Videos →
+
+                    </a>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">📄</div>
+
+                    <h3>Past Papers</h3>
+
+                    <p>
+                        Access previous examinations and
+                        practice questions for revision.
+                    </p>
+
+                    <a
+                        href="javascript:void(0)"
+                        id="pastPaperLink"
+                        class="feature-link">
+
+                        View Past Papers →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
          EPIDEMIOLOGY TOPICS
-    ========================== -->
+    ====================================================== -->
 
-    <section class="topics" id="topics">
+    <section class="topics-section" id="topics">
 
-        <div class="section-title">
+        <div class="section-container">
 
-            <h2>Epidemiology Topics</h2>
+            <div class="section-heading">
 
-            <p>
-                Important concepts to explore
-            </p>
+                <div class="small-title">
+                    Epidemiology
+                </div>
 
-        </div>
+                <h2>Key Topics</h2>
 
-        <div class="topic-list">
+                <p>
+                    Topics you will encounter during the course.
+                </p>
 
-            <div class="topic">
-                <strong>1.</strong> Measures of disease frequency
             </div>
 
-            <div class="topic">
-                <strong>2.</strong> Incidence and prevalence
-            </div>
 
-            <div class="topic">
-                <strong>3.</strong> Measures of association
-            </div>
+            <div class="topic-grid">
 
-            <div class="topic">
-                <strong>4.</strong> Study designs
-            </div>
+                <div class="topic">
+                    <div class="topic-number">01</div>
+                    <h3>Introduction to Epidemiology</h3>
+                </div>
 
-            <div class="topic">
-                <strong>5.</strong> Cohort studies
-            </div>
+                <div class="topic">
+                    <div class="topic-number">02</div>
+                    <h3>Incidence & Prevalence</h3>
+                </div>
 
-            <div class="topic">
-                <strong>6.</strong> Case-control studies
-            </div>
+                <div class="topic">
+                    <div class="topic-number">03</div>
+                    <h3>Measures of Association</h3>
+                </div>
 
-            <div class="topic">
-                <strong>7.</strong> Cross-sectional studies
-            </div>
+                <div class="topic">
+                    <div class="topic-number">04</div>
+                    <h3>Cohort Studies</h3>
+                </div>
 
-            <div class="topic">
-                <strong>8.</strong> Bias and confounding
-            </div>
+                <div class="topic">
+                    <div class="topic-number">05</div>
+                    <h3>Case-Control Studies</h3>
+                </div>
 
-            <div class="topic">
-                <strong>9.</strong> Screening and diagnostic tests
-            </div>
+                <div class="topic">
+                    <div class="topic-number">06</div>
+                    <h3>Cross-Sectional Studies</h3>
+                </div>
 
-            <div class="topic">
-                <strong>10.</strong> Outbreak investigation
-            </div>
+                <div class="topic">
+                    <div class="topic-number">07</div>
+                    <h3>Bias & Confounding</h3>
+                </div>
 
-            <div class="topic">
-                <strong>11.</strong> Public health surveillance
-            </div>
+                <div class="topic">
+                    <div class="topic-number">08</div>
+                    <h3>Screening & Diagnosis</h3>
+                </div>
 
-            <div class="topic">
-                <strong>12.</strong> Causation in epidemiology
-            </div>
+                <div class="topic">
+                    <div class="topic-number">09</div>
+                    <h3>Outbreak Investigation</h3>
+                </div>
 
-        </div>
+                <div class="topic">
+                    <div class="topic-number">10</div>
+                    <h3>Surveillance</h3>
+                </div>
 
-    </section>
+                <div class="topic">
+                    <div class="topic-number">11</div>
+                    <h3>Causation</h3>
+                </div>
 
+                <div class="topic">
+                    <div class="topic-number">12</div>
+                    <h3>Public Health Research</h3>
+                </div>
 
-    <!-- =========================
-         MEDICAL STATISTICS
-    ========================== -->
-
-    <section class="statistics" id="statistics">
-
-        <div class="section-title">
-
-            <h2>Medical Statistics</h2>
-
-            <p>
-                Key statistical concepts
-            </p>
-
-        </div>
-
-        <div class="stat-boxes">
-
-            <div class="stat-box">
-                <h3>01</h3>
-                <p>Descriptive Statistics</p>
-            </div>
-
-            <div class="stat-box">
-                <h3>02</h3>
-                <p>Probability</p>
-            </div>
-
-            <div class="stat-box">
-                <h3>03</h3>
-                <p>Sampling</p>
-            </div>
-
-            <div class="stat-box">
-                <h3>04</h3>
-                <p>Hypothesis Testing</p>
-            </div>
-
-            <div class="stat-box">
-                <h3>05</h3>
-                <p>Confidence Intervals</p>
-            </div>
-
-            <div class="stat-box">
-                <h3>06</h3>
-                <p>Regression</p>
             </div>
 
         </div>
@@ -667,67 +1366,257 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <section class="resources">
+
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <div class="small-title">
+                    Medical Statistics
+                </div>
+
+                <h2>Statistics Topics</h2>
+
+                <p>
+                    Important statistical concepts for health research.
+                </p>
+
+            </div>
+
+
+            <div class="topic-grid">
+
+                <div class="topic">
+                    <div class="topic-number">01</div>
+                    <h3>Descriptive Statistics</h3>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-number">02</div>
+                    <h3>Probability</h3>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-number">03</div>
+                    <h3>Sampling</h3>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-number">04</div>
+                    <h3>Normal Distribution</h3>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-number">05</div>
+                    <h3>Confidence Intervals</h3>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-number">06</div>
+                    <h3>Hypothesis Testing</h3>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-number">07</div>
+                    <h3>Correlation</h3>
+                </div>
+
+                <div class="topic">
+                    <div class="topic-number">08</div>
+                    <h3>Regression</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
          RESOURCES
-    ========================== -->
+    ====================================================== -->
 
     <section class="resources" id="resources">
 
-        <div class="section-title">
+        <div class="section-container">
 
-            <h2>Learning Resources</h2>
+            <div class="section-heading">
 
-            <p>
-                Materials for your class
-            </p>
+                <div class="small-title">
+                    Course Materials
+                </div>
+
+                <h2>📂 Resources</h2>
+
+                <p>
+                    Everything you need for your studies.
+                </p>
+
+            </div>
+
+
+            <div class="resource-grid">
+
+
+                <div class="resource-card">
+
+                    <div class="resource-icon">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <h3>Lecture Notes</h3>
+
+                        <p>
+                            Course notes and presentations.
+                        </p>
+
+                        <a
+                            href="javascript:void(0)"
+                            id="notesResource"
+                            class="resource-button">
+
+                            Open Notes
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="resource-card">
+
+                    <div class="resource-icon">
+                        📝
+                    </div>
+
+                    <div>
+
+                        <h3>Assignments</h3>
+
+                        <p>
+                            Current coursework and assignments.
+                        </p>
+
+                        <a
+                            href="javascript:void(0)"
+                            id="assignmentResource"
+                            class="resource-button">
+
+                            Open Assignments
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="resource-card">
+
+                    <div class="resource-icon">
+                        📄
+                    </div>
+
+                    <div>
+
+                        <h3>Past Papers</h3>
+
+                        <p>
+                            Practice using previous examinations.
+                        </p>
+
+                        <a
+                            href="javascript:void(0)"
+                            id="pastPaperResource"
+                            class="resource-button">
+
+                            Open Past Papers
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="resource-card">
+
+                    <div class="resource-icon">
+                        🎥
+                    </div>
+
+                    <div>
+
+                        <h3>Live Classes</h3>
+
+                        <p>
+                            Join the current online lecture.
+                        </p>
+
+                        <a
+                            href="javascript:void(0)"
+                            id="zoomResource"
+                            class="resource-button">
+
+                            Join Zoom
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
-        <div class="resource-list">
-
-            <div class="resource">
-
-                <h3>📚 Lecture Notes</h3>
-
-                <p>
-                    Course lecture notes and study materials
-                    will be added here.
-                </p>
-
-            </div>
+    </section>
 
 
-            <div class="resource">
+    <!-- =====================================================
+         ANNOUNCEMENTS
+    ====================================================== -->
 
-                <h3>📝 Assignments</h3>
+    <section class="announcement-section">
 
-                <p>
-                    Class assignments and practice questions
-                    can be added here.
-                </p>
+        <div class="section-container">
+
+            <div class="section-heading">
+
+                <div class="small-title">
+                    Stay Updated
+                </div>
+
+                <h2>📢 Announcements</h2>
 
             </div>
 
 
-            <div class="resource">
+            <div class="announcement">
 
-                <h3>📖 Recommended Reading</h3>
+                <div class="announcement-header">
 
-                <p>
-                    Textbooks, articles, guidelines, and other
-                    learning resources can be listed here.
-                </p>
+                    <span>📢</span>
 
-            </div>
+                    <h3>
+                        Welcome to the Class Portal
+                    </h3>
 
-
-            <div class="resource">
-
-                <h3>💻 Statistical Software</h3>
+                </div>
 
                 <p>
-                    Resources for statistical analysis software
-                    can be added here.
+                    Important announcements, lecture updates,
+                    assignment deadlines and class information
+                    will appear here.
                 </p>
 
             </div>
@@ -737,116 +1626,488 @@
     </section>
 
 
-    <!-- =========================
-         ANNOUNCEMENT
-    ========================== -->
+    <!-- =====================================================
+         YOUTUBE
+    ====================================================== -->
 
-    <section>
+    <section class="video-section" id="videos">
 
-        <div class="section-title">
+        <div class="section-container">
 
-            <h2>Class Announcements</h2>
+            <div class="section-heading">
 
-        </div>
+                <div class="small-title" style="color:#f5b700;">
+                    Video Learning
+                </div>
 
-        <div class="announcement">
+                <h2>▶️ YouTube Lectures</h2>
 
-            <h3>📢 Welcome to the Course Website!</h3>
+                <p>
+                    Access recorded lectures and revision videos.
+                </p>
 
-            <p>
-                This website will be used to share important
-                course information, learning resources,
-                assignments, and announcements.
-            </p>
+            </div>
+
+
+            <div class="video-container">
+
+                <div class="video-placeholder">
+
+                    <div class="youtube-icon">
+                        ▶️
+                    </div>
+
+                    <h3>
+                        Course Video Library
+                    </h3>
+
+                    <p>
+                        The YouTube link will be added here
+                        when the course video channel or playlist
+                        is available.
+                    </p>
+
+                    <a
+                        href="javascript:void(0)"
+                        id="youtubeVideoButton"
+                        class="btn btn-gold">
+
+                        Open YouTube
+
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================================
          CONTACT
-    ========================== -->
+    ====================================================== -->
 
-    <section class="contact" id="contact">
+    <section class="contact-section" id="contact">
 
-        <div class="section-title">
+        <div class="section-container">
 
-            <h2>Contact</h2>
+            <h2>
+                🎓 Epidemiology & Medical Statistics
+            </h2>
 
             <p>
-                Get in touch with the class
+                Kirinyaga University • Student Learning Portal
+            </p>
+
+            <p>
+                Learn • Analyze • Research • Improve Health
             </p>
 
         </div>
 
-        <p>
-            📧 Course Email: Add your course email here
-        </p>
-
-        <p>
-            👨‍🏫 Lecturer: Add lecturer name here
-        </p>
-
-        <p>
-            👥 Class Representative: Add name here
-        </p>
-
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================================
          FOOTER
-    ========================== -->
+    ====================================================== -->
 
     <footer>
 
-        <p>
-            &copy; 2026 Epidemiology & Medical Statistics
-        </p>
+        <div class="footer-grid">
 
-        <p>
-            Class Learning Website
-        </p>
+            <div>
+
+                <h3>
+                    Kirinyaga University
+                </h3>
+
+                <p>
+                    Epidemiology & Medical Statistics
+                    Student Learning Portal.
+                </p>
+
+                <p style="margin-top:10px;">
+                    Innovative technology for a dynamic world.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#learning">Learning</a>
+                    </li>
+
+                    <li>
+                        <a href="#topics">Topics</a>
+                    </li>
+
+                    <li>
+                        <a href="#resources">Resources</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Student Tools
+                </h3>
+
+                <ul>
+
+                    <li>📚 Notes</li>
+
+                    <li>📝 Assignments</li>
+
+                    <li>✅ Attendance</li>
+
+                    <li>🎥 Zoom</li>
+
+                    <li>▶️ YouTube</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Epidemiology & Medical Statistics |
+                Kirinyaga University
+            </p>
+
+        </div>
 
     </footer>
 
 
-    <!-- =========================
+    <!-- =====================================================
          JAVASCRIPT
-    ========================== -->
+    ====================================================== -->
 
     <script>
 
-        function toggleMenu() {
+        /* =====================================================
+           LINK HANDLER
+        ====================================================== */
 
-            const navLinks =
-                document.getElementById("navLinks");
+        function openCourseLink(link, name) {
 
-            navLinks.classList.toggle("active");
+            if (link && link.trim() !== "") {
+
+                window.open(link, "_blank");
+
+            } else {
+
+                alert(
+                    name +
+                    " link has not been added yet.\n\n" +
+                    "The course administrator will add it soon."
+                );
+
+            }
 
         }
 
-        // Close mobile menu after clicking a link
 
-        const links =
-            document.querySelectorAll(".nav-links a");
+        /* =====================================================
+           CONNECT BUTTONS TO LINKS
+        ====================================================== */
 
-        links.forEach(function(link) {
+        const linkButtons = {
 
-            link.addEventListener("click", function() {
+            attendanceButton: ["attendance", "Attendance"],
+            zoomButton: ["zoom", "Zoom"],
+            youtubeButton: ["youtube", "YouTube"],
+            notesButton: ["notes", "Notes"],
 
-                document
-                    .getElementById("navLinks")
-                    .classList.remove("active");
+            attendanceLink: ["attendance", "Attendance"],
+            zoomLink: ["zoom", "Zoom"],
+            youtubeLink: ["youtube", "YouTube"],
+            notesLink: ["notes", "Notes"],
+
+            assignmentLink: ["assignments", "Assignments"],
+            pastPaperLink: ["pastPapers", "Past papers"],
+
+            notesResource: ["notes", "Notes"],
+            assignmentResource: ["assignments", "Assignments"],
+            pastPaperResource: ["pastPapers", "Past papers"],
+            zoomResource: ["zoom", "Zoom"],
+
+            youtubeVideoButton: ["youtube", "YouTube"]
+
+        };
+
+
+        Object.keys(linkButtons).forEach(function(id) {
+
+            const element = document.getElementById(id);
+
+            if (!element) return;
+
+            const linkName = linkButtons[id][0];
+            const displayName = linkButtons[id][1];
+
+            element.addEventListener("click", function(event) {
+
+                event.preventDefault();
+
+                openCourseLink(
+                    COURSE_LINKS[linkName],
+                    displayName
+                );
 
             });
 
         });
 
+
+        /* =====================================================
+           MOBILE MENU
+        ====================================================== */
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        menuButton.addEventListener("click", function() {
+
+            navLinks.classList.toggle("active");
+
+        });
+
+
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(function(link) {
+
+                link.addEventListener("click", function() {
+
+                    navLinks.classList.remove("active");
+
+                });
+
+            });
+
+
+        /* =====================================================
+           SEARCH DATA
+        ====================================================== */
+
+        const searchableTopics = [
+
+            {
+                title: "Introduction to Epidemiology",
+                category: "Epidemiology",
+                text: "Basic principles and concepts of epidemiology."
+            },
+
+            {
+                title: "Incidence and Prevalence",
+                category: "Epidemiology",
+                text: "Measures of disease frequency."
+            },
+
+            {
+                title: "Measures of Association",
+                category: "Epidemiology",
+                text: "Risk ratio, odds ratio and related measures."
+            },
+
+            {
+                title: "Cohort Studies",
+                category: "Epidemiology",
+                text: "Study design involving exposed and unexposed groups."
+            },
+
+            {
+                title: "Case-Control Studies",
+                category: "Epidemiology",
+                text: "Study design comparing cases and controls."
+            },
+
+            {
+                title: "Cross-Sectional Studies",
+                category: "Epidemiology",
+                text: "Studies measuring exposure and outcome at a point in time."
+            },
+
+            {
+                title: "Bias and Confounding",
+                category: "Epidemiology",
+                text: "Sources of error and methods of controlling confounding."
+            },
+
+            {
+                title: "Screening and Diagnosis",
+                category: "Epidemiology",
+                text: "Sensitivity, specificity and predictive values."
+            },
+
+            {
+                title: "Descriptive Statistics",
+                category: "Medical Statistics",
+                text: "Mean, median, mode, variance and standard deviation."
+            },
+
+            {
+                title: "Probability",
+                category: "Medical Statistics",
+                text: "Basic probability concepts used in health research."
+            },
+
+            {
+                title: "Sampling",
+                category: "Medical Statistics",
+                text: "Sampling methods and sample selection."
+            },
+
+            {
+                title: "Normal Distribution",
+                category: "Medical Statistics",
+                text: "Properties and applications of the normal distribution."
+            },
+
+            {
+                title: "Confidence Intervals",
+                category: "Medical Statistics",
+                text: "Estimating population parameters."
+            },
+
+            {
+                title: "Hypothesis Testing",
+                category: "Medical Statistics",
+                text: "Statistical tests and interpretation of p-values."
+            },
+
+            {
+                title: "Correlation",
+                category: "Medical Statistics",
+                text: "Measuring relationships between variables."
+            },
+
+            {
+                title: "Regression",
+                category: "Medical Statistics",
+                text: "Modeling relationships between variables."
+            }
+
+        ];
+
+
+        /* =====================================================
+           SEARCH FUNCTION
+        ====================================================== */
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const searchResults =
+            document.getElementById("searchResults");
+
+
+        function performSearch() {
+
+            const query =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+            if (query === "") {
+
+                searchResults.innerHTML = "";
+
+                return;
+
+            }
+
+
+            const results =
+                searchableTopics.filter(function(topic) {
+
+                    return (
+                        topic.title.toLowerCase().includes(query) ||
+                        topic.category.toLowerCase().includes(query) ||
+                        topic.text.toLowerCase().includes(query)
+                    );
+
+                });
+
+
+            if (results.length === 0) {
+
+                searchResults.innerHTML = `
+                    <div class="no-results">
+                        No matching topic found.
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            searchResults.innerHTML =
+                results.map(function(topic) {
+
+                    return `
+                        <div class="search-result">
+
+                            <strong>
+                                ${topic.title}
+                            </strong>
+
+                            <div style="font-size:13px;color:#087443;margin-top:3px;">
+                                ${topic.category}
+                            </div>
+
+                            <div style="font-size:14px;margin-top:5px;">
+                                ${topic.text}
+                            </div>
+
+                        </div>
+                    `;
+
+                }).join("");
+
+        }
+
+
+        searchInput.addEventListener(
+            "input",
+            performSearch
+        );
+
     </script>
 
 </body>
 </html>
+
+
 
 
